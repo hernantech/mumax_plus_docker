@@ -1,0 +1,4 @@
+[submodule "src/mumaxplus"]
+	path = src/mumaxplus
+	url = https://github.com/hernantech/mumaxplus.git
+    branch = master

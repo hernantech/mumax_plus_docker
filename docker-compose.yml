@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  mumaxplus:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      args:
+        CUDA_VERSION: ${CUDA_VERSION:-12.1.1}
+    image: ${DOCKER_REGISTRY:-localhost}/mumaxplus:${TAG:-latest}
+    volumes:
+      - ./src/mumaxplus/examples:/app/mumaxplus/examples
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
